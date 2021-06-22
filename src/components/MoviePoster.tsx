@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+
+import {View, Image, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Movie} from '../interfaces/movieInterface';
 
