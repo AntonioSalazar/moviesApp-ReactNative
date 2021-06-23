@@ -6,19 +6,21 @@ import {Movie} from '../interfaces/movieInterface';
 
 interface Props {
   movie: Movie;
+  height?: number;
+  width?: number;
 }
 
-const MoviePoster = ({movie}: Props) => {
+const MoviePoster = ({movie, width = 300, height = 420}: Props) => {
   const {top: marginTop} = useSafeAreaInsets();
-  console.log(JSON.stringify(movie, null, 3));
 
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
     <View
       style={{
         marginTop,
-        height: 420,
-        width: 300,
+        height,
+        width,
+        marginHorizontal: 5,
       }}>
       <View style={styles.imageContainer}>
         <Image
@@ -50,6 +52,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.37,
     shadowRadius: 7.49,
-    elevation: 10,
+    elevation: 15,
   },
 });
