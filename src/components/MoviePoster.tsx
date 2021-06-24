@@ -1,8 +1,9 @@
 import React from 'react';
 
-import {View, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Movie} from '../interfaces/movieInterface';
+import {useNavigation} from '@react-navigation/core';
 
 interface Props {
   movie: Movie;
@@ -12,10 +13,13 @@ interface Props {
 
 const MoviePoster = ({movie, width = 300, height = 420}: Props) => {
   const {top: marginTop} = useSafeAreaInsets();
+  const {navigate} = useNavigation();
 
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
-    <View
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => navigate('DetailsScreen', movie)}
       style={{
         marginTop,
         height,
@@ -30,7 +34,7 @@ const MoviePoster = ({movie, width = 300, height = 420}: Props) => {
           style={styles.image}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
